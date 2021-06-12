@@ -1,0 +1,50 @@
+.PostPage {
+  display: flex;
+  margin: 5rem 0;
+  flex-direction: column;
+}
+
+.Image {
+  object-fit: cover;
+}
+
+.PostTitle {
+  font-size: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.BlogText {
+  margin: 3rem 0;
+  line-height: 1.5;
+  list-style: inside;
+}
+
+.H2 {
+  font-size: 4rem;
+  align-self: center;
+}
+
+.ContentWrapper {
+  display: flex;
+}
+
+.Content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.SideBar {
+  flex: 1;
+}
+
+@media screen and (max-width: 540px) {
+  .SideBar {
+    display: none;
+  }
+
+  .PostTitle {
+    font-size: 4rem;
+  }
+}

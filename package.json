@@ -4,12 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run build:sanity && npm run build:next",
+    "build:next": "next build",
+    "start:next": "next start",
+    "build:sanity": "cd sanitystudio && sanity build ../public/studio -y && cd ..",
+    "start:sanity": "cd sanitystudio && sanity start",
+    "postinstall": "lerna bootstrap --no-ci"
   },
   "dependencies": {
     "next": "10.2.3",
+    "next-sanity": "^0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^2.10.5",
+    "lerna": "^4.0.0"
   }
 }

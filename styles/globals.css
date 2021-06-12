@@ -1,9 +1,29 @@
+:root {
+  font-size: 10px;
+  --accent: #e2b669;
+  --accent-faded: rgba(226, 182, 105, 20%);
+  --max-width: 1280px;
+  --pixel-ratio: var(-webkit-device-pixel-ratio);
+  --logo-width: 12vw;
+  --social-display: flex;
+  --nav-links-display: flex;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
+  background-color: #fdfdfd;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.8rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 a {
@@ -11,6 +31,102 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Dancing Script';
+  text-transform: capitalize;
+  font-feature-settings: 'liga' on, 'ordn' on, 'salt' on, 'fina' on;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  /* width: 100vw; */
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: var(--max-width);
+  max-width: var(--max-width);
+  margin: 20px 0;
+  flex-direction: column;
+}
+
+.Category {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+*::marker {
+  font-size: 1.5rem;
+}
+
+ul {
+  list-style: inside;
+}
+
+ul ul {
+  margin-left: 2rem;
+  list-style: inside;
+}
+
+@media screen and (max-width: 1440px) {
+  :root {
+    font-size: calc(10px - 0.15vw);
+    --max-width: 1024px;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+  only screen and (min--moz-device-pixel-ratio: 1.25),
+  only screen and (-o-min-device-pixel-ratio: 1.25/1),
+  only screen and (min-device-pixel-ratio: 1.25),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 1.25dppx),
+  only screen and (max-width: 1440px) {
+  :root {
+    font-size: calc(10px - 0.15vw);
+    --max-width: calc(1280px / 1.25);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    font-size: 5px;
+    --max-width: 768px;
+    --logo-width: 15vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 5px;
+    --max-width: 540px;
+    --logo-width: 18vw;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  :root {
+    font-size: 1.8vw;
+    --max-width: calc(100vw - 40px);
+    --logo-width: 35vw;
+    --social-display: none;
+    --nav-links-display: none;
+  }
+  .Category {
+    margin-top: 1rem;
+  }
 }
