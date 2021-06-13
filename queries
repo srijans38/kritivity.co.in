@@ -1,0 +1,9 @@
+*[_type == "post" && !(_id in path('drafts.**'))]{
+  _id,
+  _createdAt,
+  title,
+  categories[] -> {title},
+	'slug': slug.current,
+	body,
+	author -> {name}
+}

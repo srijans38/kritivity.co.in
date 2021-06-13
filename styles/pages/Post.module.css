@@ -8,19 +8,25 @@
   object-fit: cover;
 }
 
+.Text {
+  display: flex;
+  flex-direction: column;
+}
+
+.Text h1,
 .PostTitle {
   font-size: 5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
-.BlogText {
+.Text p {
   margin: 3rem 0;
   line-height: 1.5;
   list-style: inside;
 }
 
-.H2 {
+.Text h2 {
   font-size: 4rem;
   align-self: center;
 }
@@ -44,7 +50,7 @@
     display: none;
   }
 
-  .PostTitle {
+  .Text h1 {
     font-size: 4rem;
   }
 }
