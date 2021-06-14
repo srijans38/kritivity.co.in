@@ -40,12 +40,37 @@ const postQuery = groq`
 `;
 
 export const getStaticPaths = async function () {
-  const paths = await getClient.fetch(
-    groq`*[_type == "post" && defined(slug.current)][].slug.current`
+  // const paths = await getClient.fetch(
+  //   groq`*[_type == "post" && defined(slug.current)][].slug.current`
+  // );
+
+  const res = await fetch(
+    'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `query {
+          allPost(where: {_ : {is_draft: false}}) {
+            slug {
+              current
+            }
+          }
+        }`,
+      }),
+    }
   );
 
+  const {
+    data: { allPost: paths },
+  } = await res.json();
+
+  console.log(paths);
+
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug) => ({ params: { slug: slug.slug.current } })),
     fallback: false,
   };
 };
