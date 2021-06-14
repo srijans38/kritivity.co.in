@@ -5,12 +5,8 @@
   "scripts": {
     "export": "next build && next export",
     "dev": "next dev",
-    "build": "npm run build:sanity && npm run build:next",
-    "build:next": "next build",
-    "start:next": "next start",
-    "build:sanity": "cd sanitystudio && sanity build ../public/studio -y && cd ..",
-    "start:sanity": "cd sanitystudio && sanity start",
-    "postinstall": "lerna bootstrap --no-ci"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "next": "10.2.3",
