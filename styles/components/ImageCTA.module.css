@@ -25,23 +25,24 @@
 @media screen and (max-width: 540px) {
   .ImageCTA {
     flex-direction: column;
-    height: 100vh;
-    /* justify-content: flex-start; */
     justify-content: space-between;
+  }
+
+  .a > div {
+    max-height: 100% !important;
+    height: 100% !important;
+  }
+
+  .a > div > div {
+    padding-top: 47% !important;
   }
 
   .ImageCTAPost {
     max-width: 100%;
     width: 100%;
-    max-height: 30%;
-    height: 30%;
   }
 
   .ImageCTAPost:not(:first-child) {
     margin-top: 3vh;
-  }
-
-  .Image {
-    height: 80%;
   }
 }
