@@ -7,7 +7,11 @@ export default function ExcerptPosts({ posts }) {
     <div className={styles.ExcerptPosts}>
       {posts.map((post) => (
         <div className={styles.ExcerptPost} key={post.title}>
-          <img src={post.mainImage.asset.url} className={styles.Image} />
+          <img
+            src={post.mainImage.asset.url}
+            alt={post.title}
+            className={styles.Image}
+          />
           <div className={styles.ExcerptPost_left}>
             <Link href={`/posts/${post.slug.current}`}>
               <a>
