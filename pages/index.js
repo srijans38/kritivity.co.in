@@ -1,27 +1,8 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import ExcerptPosts from '../components/ExcerptPosts';
-import Header from '../components/Header';
 import ImageCTA from '../components/ImageCTA';
 
-const topPostsQuery = `query {
-  allPost(where: {_ : {is_draft: false}}, sort: {_createdAt: DESC}, limit: 6) {
-    _id
-    title
-    categories {
-      title
-    }
-    bodyRaw
-    slug {
-      current
-    }
-    mainImage {
-      asset {
-        url
-      }
-    }
-  }
-}`;
+import { getTopPosts } from '../lib/sanity';
 
 export default function Home({ posts }) {
   return (
@@ -38,22 +19,7 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(
-    'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        query: topPostsQuery,
-      }),
-    }
-  );
-
-  const {
-    data: { allPost: posts },
-  } = await res.json();
+  const { allPost: posts } = await getTopPosts();
 
   return {
     props: {

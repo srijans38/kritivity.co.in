@@ -1,9 +1,9 @@
-import groq from 'groq';
 import Image from 'next/image';
 import React from 'react';
-import { PortableText } from '../../lib/sanity';
-import { getClient } from '../../lib/sanity.server';
 import styles from '../../styles/pages/Post.module.css';
+
+import BlockContent from '@sanity/block-content-to-react';
+import { getPostDataBySlug, getSlugs } from '../../lib/sanity';
 
 export default function Post({ data: { post } }) {
   return (
@@ -17,7 +17,7 @@ export default function Post({ data: { post } }) {
       <div className={styles.ContentWrapper}>
         <div className={styles.Content}>
           <h1 className={styles.PostTitle}>{post.title}</h1>
-          <PortableText blocks={post.body} className={styles.Text} />
+          <BlockContent blocks={post.body} className={styles.Text} />
         </div>
         <div className={styles.SideBar}></div>
       </div>
@@ -25,53 +25,8 @@ export default function Post({ data: { post } }) {
   );
 }
 
-const slugQuery = `
-  query {
-          allPost(where: {_ : {is_draft: false}}) {
-            slug {
-              current
-            }
-          }
-        }
-`;
-
-const postQuery = `
-  query($slug: StringFilter!) {
-  allPost(where: { _: { is_draft: false },  slug: { current : $slug }}, limit: 1) {
-    _id
-    title
-    body: bodyRaw
-    mainImage {
-      asset {
-        url
-      }
-    }
-    categories {
-      title
-    }
-    slug {
-      current
-    }
-  }
-}`;
-
 export const getStaticPaths = async function () {
-  const res = await fetch(
-    'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
-    {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: slugQuery,
-      }),
-    }
-  );
-
-  const {
-    data: { allPost: paths },
-  } = await res.json();
+  const { allPost: paths } = await getSlugs();
 
   console.log(paths);
 
@@ -84,27 +39,7 @@ export const getStaticPaths = async function () {
 export const getStaticProps = async function ({ params }) {
   const { slug } = params;
 
-  const res = await fetch(
-    'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
-    {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: postQuery,
-        variables: {
-          slug: {
-            eq: slug,
-          },
-        },
-      }),
-    }
-  );
-
-  const {
-    data: { allPost: post },
-  } = await res.json();
+  const { allPost: post } = await getPostDataBySlug(slug);
 
   return {
     props: {
