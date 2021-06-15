@@ -12,6 +12,7 @@ export default function Post({ data: { post } }) {
         src={post.mainImage.asset.url}
         width="1280"
         height="500"
+        layout="responsive"
         className={styles.Image}
         alt={post.title}
       />
