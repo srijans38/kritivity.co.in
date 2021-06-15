@@ -9,7 +9,7 @@ export default function Post({ data: { post } }) {
   return (
     <div className={styles.PostPage}>
       <Image
-        src="/food.jpg"
+        src={post.mainImage.asset.url}
         width="1280"
         height="500"
         className={styles.Image}
@@ -25,25 +25,37 @@ export default function Post({ data: { post } }) {
   );
 }
 
-const postQuery = groq`
-  *[_type == "post" && slug.current == $slug][0] {
-    _id,
-    title,
-    body,
-    mainImage,
-    categories[]->{
-      _id,
-      title
-    },
-    "slug": slug.current
-  }
+const slugQuery = `
+  query {
+          allPost(where: {_ : {is_draft: false}}) {
+            slug {
+              current
+            }
+          }
+        }
 `;
 
-export const getStaticPaths = async function () {
-  // const paths = await getClient.fetch(
-  //   groq`*[_type == "post" && defined(slug.current)][].slug.current`
-  // );
+const postQuery = `
+  query($slug: StringFilter!) {
+  allPost(where: { _: { is_draft: false },  slug: { current : $slug }}, limit: 1) {
+    _id
+    title
+    body: bodyRaw
+    mainImage {
+      asset {
+        url
+      }
+    }
+    categories {
+      title
+    }
+    slug {
+      current
+    }
+  }
+}`;
 
+export const getStaticPaths = async function () {
   const res = await fetch(
     'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
     {
@@ -52,13 +64,7 @@ export const getStaticPaths = async function () {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        query: `query {
-          allPost(where: {_ : {is_draft: false}}) {
-            slug {
-              current
-            }
-          }
-        }`,
+        query: slugQuery,
       }),
     }
   );
@@ -76,13 +82,35 @@ export const getStaticPaths = async function () {
 };
 
 export const getStaticProps = async function ({ params }) {
-  const post = await getClient.fetch(postQuery, {
-    slug: params.slug,
-  });
+  const { slug } = params;
+
+  const res = await fetch(
+    'https://mj5cd582.api.sanity.io/v1/graphql/production/default',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: postQuery,
+        variables: {
+          slug: {
+            eq: slug,
+          },
+        },
+      }),
+    }
+  );
+
+  const {
+    data: { allPost: post },
+  } = await res.json();
 
   return {
     props: {
-      data: { post },
+      data: {
+        post: post[0],
+      },
     },
   };
 };
