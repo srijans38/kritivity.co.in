@@ -13,6 +13,7 @@ export default function Post({ data: { post } }) {
         width="1280"
         height="500"
         className={styles.Image}
+        alt={post.title}
       />
       <div className={styles.ContentWrapper}>
         <div className={styles.Content}>
