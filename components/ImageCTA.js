@@ -46,6 +46,8 @@ export default function ImageCTA({ posts }) {
                   width="427"
                   height="500"
                   layout="responsive"
+                  placeholder="blur"
+                  blurDataURL={post.blur.imgData}
                 />
               </motion.a>
             </Link>

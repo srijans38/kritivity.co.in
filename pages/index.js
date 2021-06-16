@@ -3,6 +3,7 @@ import ExcerptPosts from '../components/ExcerptPosts';
 import ImageCTA from '../components/ImageCTA';
 import { motion } from 'framer-motion';
 
+import { getBlurredImage } from '../lib/blurImages';
 import { getTopPosts } from '../lib/sanity';
 
 export default function Home({ posts }) {
@@ -29,12 +30,15 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts: posts.map((post) => {
-        return {
-          ...post,
-          excerpt: post.bodyRaw[0].children[0].text,
-        };
-      }),
+      posts: await Promise.all(
+        posts.map(async (post) => {
+          return {
+            ...post,
+            blur: await getBlurredImage(post.mainImage.asset.url),
+            excerpt: post.bodyRaw[0].children[0].text,
+          };
+        })
+      ),
     },
   };
 };
