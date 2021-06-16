@@ -22,7 +22,7 @@
 }
 
 .Text p {
-  margin: 3rem 0;
+  margin: 2rem 0;
   line-height: 1.5;
   list-style: inside;
 }
@@ -30,6 +30,32 @@
 .Text h2 {
   font-size: 4rem;
   align-self: center;
+}
+
+.Text img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.Text a {
+  position: relative;
+}
+
+.Text a::after {
+  z-index: -1;
+  content: '';
+  background-color: var(--accent);
+  position: absolute;
+  width: 120%;
+  height: 25%;
+  bottom: -0.5rem;
+  left: -10%;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.Text a:hover::after {
+  height: 150%;
 }
 
 .ContentWrapper {
