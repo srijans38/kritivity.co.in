@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from '../styles/components/Header.module.css';
+import NavLink from './NavLink';
 import Link from 'next/link';
+import { AnimateSharedLayout } from 'framer-motion';
 
 export default function Header() {
   return (
@@ -29,29 +31,29 @@ export default function Header() {
       </div>
       <ul className={styles.NavLinks}>
         <li>
-          <Link href="/">
+          <NavLink href="/">
             <a>HOME</a>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link href="/cat/recipes">
+          <NavLink href="/cat/recipes">
             <a>RECIPES</a>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link href="/cat/food-reviews">
+          <NavLink href="/cat/food-reviews">
             <a>FOOD RECIPES</a>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link href="/gorsi">
+          <NavLink href="/gorsi">
             <a>GORSI</a>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link href="/about-me">
+          <NavLink href="/about-me">
             <a>ABOUT ME</a>
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>

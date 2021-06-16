@@ -133,3 +133,15 @@ ul ul {
     margin-top: 1rem;
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--accent-faded);
+}

@@ -2,15 +2,43 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styles from '../styles/components/ImageCTA.module.css';
+import { motion } from 'framer-motion';
+
+const container = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { duration: 0.8 },
+  },
+};
+
+const image = {
+  hover: {},
+};
 
 export default function ImageCTA({ posts }) {
   return (
-    <div className={styles.ImageCTA}>
+    <motion.div
+      className={styles.ImageCTA}
+      initial="initial"
+      animate="animate"
+      variants={container}
+    >
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className={styles.ImageCTAPost}>
+          <motion.div key={post._id} className={styles.ImageCTAPost}>
             <Link href={`/posts/${post.slug.current}`}>
-              <a className={styles.a}>
+              <motion.a
+                className={styles.a}
+                whileHover={{
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+                  cursor: 'pointer',
+                  scale: 1.02,
+                  transition: {
+                    duration: 0.2,
+                  },
+                }}
+              >
                 <Image
                   src={post.mainImage.asset.url}
                   alt={post.title}
@@ -19,7 +47,7 @@ export default function ImageCTA({ posts }) {
                   height="500"
                   layout="responsive"
                 />
-              </a>
+              </motion.a>
             </Link>
             <p className="Category">{post.categories[0].title}</p>
             <Link href={`/posts/${post.slug.current}`}>
@@ -27,8 +55,8 @@ export default function ImageCTA({ posts }) {
                 <h1 className={styles.Title}>{post.title}</h1>
               </a>
             </Link>
-          </div>
+          </motion.div>
         ))}
-    </div>
+    </motion.div>
   );
 }

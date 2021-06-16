@@ -1,0 +1,23 @@
+.NavLink {
+  position: relative;
+}
+
+.NavLink a {
+  margin: 0 1.8rem;
+  position: relative;
+}
+
+.NavLink div {
+  position: absolute;
+  width: calc(100% - 2 * 1.8rem);
+  height: 20%;
+  bottom: -0.8rem;
+  left: 1.8rem;
+  background-color: var(--accent);
+  opacity: 1;
+  /* transition: all 500ms ease-in-out; */
+}
+
+/* .NavLink:hover div {
+  opacity: 1 !important;
+} */

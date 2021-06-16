@@ -27,27 +27,6 @@
   font-weight: bold;
 }
 
-.NavLinks li {
-  margin: 0 1.8rem;
-  position: relative;
-}
-
-.NavLinks li::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 30%;
-  bottom: -1rem;
-  left: 0;
-  background-color: var(--accent);
-  opacity: 0;
-  transition: all 500ms ease-in-out;
-}
-
-.NavLinks li:hover::after {
-  opacity: 1;
-}
-
 .Logo {
   width: var(--logo-width);
 }

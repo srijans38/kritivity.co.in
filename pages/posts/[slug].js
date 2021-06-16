@@ -1,13 +1,19 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from '../../styles/pages/Post.module.css';
+import { motion } from 'framer-motion';
 
 import BlockContent from '@sanity/block-content-to-react';
 import { getPostDataBySlug, getSlugs } from '../../lib/sanity';
 
 export default function Post({ data: { post } }) {
   return (
-    <div className={styles.PostPage}>
+    <motion.div
+      className={styles.PostPage}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.6 } }}
+      exit={{ opacity: 0 }}
+    >
       <Image
         src={post.mainImage.asset.url}
         width="1280"
@@ -23,7 +29,7 @@ export default function Post({ data: { post } }) {
         </div>
         <div className={styles.SideBar}></div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
