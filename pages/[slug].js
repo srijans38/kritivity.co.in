@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from '../../styles/pages/Post.module.css';
+import styles from '../styles/pages/Post.module.css';
 import { motion } from 'framer-motion';
 
 import BlockContent from '@sanity/block-content-to-react';
-import { getPostDataBySlug, getSlugs } from '../../lib/sanity';
+import { getPostDataBySlug, getSlugs } from '../lib/sanity';
 
 const imageSerializer = (props) => {
   const {

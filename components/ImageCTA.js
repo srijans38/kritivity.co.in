@@ -27,7 +27,7 @@ export default function ImageCTA({ posts }) {
       {posts &&
         posts.map((post) => (
           <motion.div key={post._id} className={styles.ImageCTAPost}>
-            <Link href={`/posts/${post.slug.current}`}>
+            <Link href={`/${post.slug.current}`}>
               <motion.a
                 className={styles.a}
                 whileHover={{
@@ -52,7 +52,7 @@ export default function ImageCTA({ posts }) {
               </motion.a>
             </Link>
             <p className="Category">{post.categories[0].title}</p>
-            <Link href={`/posts/${post.slug.current}`}>
+            <Link href={`/${post.slug.current}`}>
               <a>
                 <h1 className={styles.Title}>{post.title}</h1>
               </a>

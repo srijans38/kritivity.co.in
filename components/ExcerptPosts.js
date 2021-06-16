@@ -13,7 +13,7 @@ export default function ExcerptPosts({ posts }) {
             className={styles.Image}
           />
           <div className={styles.ExcerptPost_left}>
-            <Link href={`/posts/${post.slug.current}`}>
+            <Link href={`/${post.slug.current}`}>
               <a>
                 <h1 className={styles.Title}>{post.title}</h1>
               </a>
