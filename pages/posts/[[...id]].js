@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageIndicator from '../../components/PageIndicator';
 import { motion } from 'framer-motion';
+import PostCard from '../../components/PostCard';
 
 export default function PostList({ pageNum, posts, pageCount }) {
   return (
@@ -20,22 +21,7 @@ export default function PostList({ pageNum, posts, pageCount }) {
         className={styles.PostGrid}
       >
         {posts.map((post) => (
-          <motion.div className={styles.PostCard} key={post._id}>
-            <Link href={`/${post.slug.current}`}>
-              <a>
-                <Image
-                  src={post.mainImage.asset.url}
-                  layout="responsive"
-                  height="200"
-                  width="400"
-                ></Image>
-              </a>
-            </Link>
-            <div className={styles.Content}>
-              <h1>{post.title}</h1>
-              <p>{post.bodyRaw[0].children[0].text.slice(0, 200)}</p>
-            </div>
-          </motion.div>
+          <PostCard post={post} />
         ))}
       </motion.div>
       <PageIndicator currPage={pageNum} pageCount={pageCount} />
