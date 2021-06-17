@@ -16,7 +16,7 @@ export default function Home({ posts }) {
     >
       <Head>
         <title>Kritivity | Home</title>
-        <meta name="description" content="Kriti's Food Blog" />
+        <meta name="description" content="Kriti's Food Blog - Kritivity" />
       </Head>
 
       <ImageCTA posts={posts.slice(0, 3)} />
@@ -26,19 +26,26 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const { allPost: posts } = await getTopPosts();
+  let { allPost: posts } = await getTopPosts();
+
+  posts = await Promise.all(
+    posts.map(async (post) => {
+      const blur = await getBlurredImage(
+        post.mainImage.asset.url,
+        post.mainImage.asset.originalFilename
+      );
+      const excerpt = post.bodyRaw[0].children[0].text;
+      return {
+        ...post,
+        blur,
+        excerpt,
+      };
+    })
+  );
 
   return {
     props: {
-      posts: await Promise.all(
-        posts.map(async (post) => {
-          return {
-            ...post,
-            blur: await getBlurredImage(post.mainImage.asset.url),
-            excerpt: post.bodyRaw[0].children[0].text,
-          };
-        })
-      ),
+      posts,
     },
   };
 };
