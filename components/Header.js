@@ -36,13 +36,8 @@ export default function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink href="/cat/recipes">
-            <a>RECIPES</a>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink href="/cat/food-reviews">
-            <a>FOOD RECIPES</a>
+          <NavLink href="/posts">
+            <a>ALL POSTS</a>
           </NavLink>
         </li>
         <li>
