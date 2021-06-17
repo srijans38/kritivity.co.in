@@ -15,7 +15,7 @@
   margin: 0 4rem;
 }
 
-.PageIndicator button {
+.PageIndicator a {
   padding: 0.8rem 1rem;
   font-family: inherit;
   font-size: inherit;

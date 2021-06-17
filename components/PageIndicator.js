@@ -1,35 +1,37 @@
 import React from 'react';
 import styles from '../styles/components/PageIndicator.module.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function PageIndicator({ currPage, pageCount }) {
   const router = useRouter();
+  let prev = null,
+    next = null;
 
-  const handlePrevious = () => {
-    if (currPage == 2) {
-      router.push('/posts');
-    } else if (currPage != 1) {
-      router.push(`${currPage - 1}`);
-    }
-  };
+  if (currPage == 2) {
+    prev = '';
+  } else if (currPage != 1) {
+    prev = `${currPage - 1}`;
+  }
 
-  const handleNext = () => {
-    if (currPage == pageCount) {
-      return;
-    } else {
-      router.push(`${currPage + 1}`);
-    }
-  };
+  if (currPage != pageCount) {
+    next = `${currPage + 1}`;
+  }
 
   return (
-    <div className={styles.PageIndicator}>
-      <button disabled={currPage == 1} onClick={handlePrevious}>
-        Previous
-      </button>
+    <motion.div layout className={styles.PageIndicator}>
+      {prev !== null && (
+        <Link href={`/posts/${prev}`}>
+          <a disabled={currPage == 1}>Previous</a>
+        </Link>
+      )}
       <p>1</p>
-      <button disabled={currPage == pageCount} onClick={handleNext}>
-        Next
-      </button>
-    </div>
+      {next !== null && (
+        <Link href={`/posts/${next}`}>
+          <a disabled={currPage == pageCount}>Next</a>
+        </Link>
+      )}
+    </motion.div>
   );
 }

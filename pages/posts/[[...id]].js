@@ -8,20 +8,19 @@ import styles from '../../styles/pages/PostList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageIndicator from '../../components/PageIndicator';
+import { motion } from 'framer-motion';
 
 export default function PostList({ pageNum, posts, pageCount }) {
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <div className={styles.PostGrid}>
+    <div className={styles.PostContainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.6 } }}
+        exit={{ opacity: 0 }}
+        className={styles.PostGrid}
+      >
         {posts.map((post) => (
-          <div className={styles.PostCard} key={post._id}>
+          <motion.div className={styles.PostCard} key={post._id}>
             <Link href={`/${post.slug.current}`}>
               <a>
                 <Image
@@ -36,9 +35,9 @@ export default function PostList({ pageNum, posts, pageCount }) {
               <h1>{post.title}</h1>
               <p>{post.bodyRaw[0].children[0].text.slice(0, 200)}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
       <PageIndicator currPage={pageNum} pageCount={pageCount} />
     </div>
   );
