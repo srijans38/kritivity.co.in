@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function PageIndicator({ currPage, pageCount }) {
+  currPage = Number(currPage);
+  pageCount = Number(pageCount);
   const router = useRouter();
   let prev = null,
     next = null;
