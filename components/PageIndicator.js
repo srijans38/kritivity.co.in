@@ -28,7 +28,7 @@ export default function PageIndicator({ currPage, pageCount }) {
           <a disabled={currPage == 1}>Previous</a>
         </Link>
       )}
-      <p>1</p>
+      <p>{currPage}</p>
       {next !== null && (
         <Link href={`/posts/${next}`}>
           <a disabled={currPage == pageCount}>Next</a>
