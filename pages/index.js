@@ -16,7 +16,7 @@ export default function Home({ posts }) {
     >
       <Head>
         <title>Kritivity | Home</title>
-        <meta name="description" content="Kriti's Food Blog" />
+        <meta name="description" content="Kriti's Food Blog - Kritivity" />
       </Head>
 
       <ImageCTA posts={posts.slice(0, 3)} />
