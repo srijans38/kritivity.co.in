@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -30,7 +31,9 @@ function MyApp({ Component, pageProps }) {
         </AnimateSharedLayout>
       </AnimatePresence>
 
-      <footer className="footer"></footer>
+      <div className="footer">
+        <div></div>
+      </div>
     </div>
   );
 }
