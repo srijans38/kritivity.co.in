@@ -58,8 +58,6 @@ export default function Post({ data: { post } }) {
 export const getStaticPaths = async function () {
   const { allPost: paths } = await getSlugs();
 
-  console.log(paths);
-
   return {
     paths: paths.map((slug) => ({ params: { slug: slug.slug.current } })),
     fallback: false,

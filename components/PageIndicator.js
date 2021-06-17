@@ -3,8 +3,6 @@ import styles from '../styles/components/PageIndicator.module.css';
 import { useRouter } from 'next/router';
 
 export default function PageIndicator({ currPage, pageCount }) {
-  console.log({ currPage, pageCount });
-
   const router = useRouter();
 
   const handlePrevious = () => {
