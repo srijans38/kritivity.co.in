@@ -14,6 +14,8 @@ export default function PostCard({ post }) {
             layout="responsive"
             height="200"
             width="400"
+            placeholder="blur"
+            blurDataURL={post.blur.imgData}
           ></Image>
         </a>
       </Link>

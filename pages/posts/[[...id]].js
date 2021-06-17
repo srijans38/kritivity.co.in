@@ -10,6 +10,7 @@ import Link from 'next/link';
 import PageIndicator from '../../components/PageIndicator';
 import { motion } from 'framer-motion';
 import PostCard from '../../components/PostCard';
+import { getBlurredImage } from '../../lib/blurImages';
 
 export default function PostList({ pageNum, posts, pageCount }) {
   return (
@@ -55,13 +56,28 @@ export const getStaticProps = async ({ params }) => {
 
   const offset = id ? perPageLimit * (parseInt(id[0]) - 1) : 0;
 
-  const { allPost } = await getPostsByLimitAndOffset({
+  let { allPost } = await getPostsByLimitAndOffset({
     limit: perPageLimit,
     offset,
   });
 
   const postCount = await getAllPostsCount();
   const pageCount = Math.ceil(postCount / perPageLimit);
+
+  allPost = await Promise.all(
+    allPost.map(async (post) => {
+      const blur = await getBlurredImage(
+        post.mainImage.asset.url,
+        post.mainImage.asset.originalFilename
+      );
+      const excerpt = post.bodyRaw[0].children[0].text.slice(0, 200);
+      return {
+        ...post,
+        blur,
+        excerpt,
+      };
+    })
+  );
 
   return {
     props: {

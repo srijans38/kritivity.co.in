@@ -1,17 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/components/ExcerptPosts.module.css';
+import Image from 'next/image';
 
 export default function ExcerptPosts({ posts }) {
   return (
     <div className={styles.ExcerptPosts}>
       {posts.map((post) => (
         <div className={styles.ExcerptPost} key={post.title}>
-          <img
-            src={post.mainImage.asset.url}
-            alt={post.title}
-            className={styles.Image}
-          />
+          <Link href={`/${post.slug.current}`}>
+            <a>
+              <Image
+                src={post.mainImage.asset.url}
+                alt={post.title}
+                className={styles.Image}
+                width="625"
+                height="250"
+                placeholder="blur"
+                blurDataURL={post.blur.imgData}
+              />
+            </a>
+          </Link>
           <div className={styles.ExcerptPost_left}>
             <Link href={`/${post.slug.current}`}>
               <a>

@@ -15,11 +15,20 @@
 .Image {
   object-fit: cover;
   width: 100%;
+  border-radius: 1.5rem;
 }
 
 .Title {
   margin: 0;
   font-size: 3rem;
+}
+
+.ImageCTAPost > a {
+  border-radius: 1.5rem;
+}
+
+.ImageCTAPost > a > div {
+  border-radius: 1.5rem;
 }
 
 @media screen and (max-width: 540px) {

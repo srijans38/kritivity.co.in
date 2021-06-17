@@ -34,7 +34,7 @@ export const getStaticProps = async () => {
         post.mainImage.asset.url,
         post.mainImage.asset.originalFilename
       );
-      const excerpt = post.bodyRaw[0].children[0].text;
+      const excerpt = post.bodyRaw[0].children[0].text.slice(0, 200);
       return {
         ...post,
         blur,
