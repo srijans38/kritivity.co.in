@@ -24,6 +24,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: clamp(12px, 1.8rem, 18px);
   font-family: 'Raleway', sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {

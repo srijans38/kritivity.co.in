@@ -6,7 +6,12 @@ import styles from '../styles/components/PostCard.module.css';
 
 export default function PostCard({ post }) {
   return (
-    <motion.div className={styles.PostCard} key={post._id}>
+    <motion.div
+      className={styles.PostCard}
+      key={post._id}
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { delay: 0.3 } }}
+    >
       <Link href={`/${post.slug.current}`}>
         <a>
           <Image

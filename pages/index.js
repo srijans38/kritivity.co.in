@@ -11,7 +11,7 @@ export default function Home({ posts }) {
     <motion.div
       style={{ width: '100%', height: '100%' }}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.6 } }}
+      animate={{ opacity: 1, transition: { delay: 0.2 } }}
       exit={{ opacity: 0 }}
     >
       <Head>
