@@ -15,6 +15,15 @@
   display: var(--social-display);
 }
 
+.SocialIcons svg {
+  width: 5rem;
+  height: 5rem;
+}
+
+.SocialIcons li:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
 .NavLinks {
   list-style: none;
   display: var(--nav-links-display);

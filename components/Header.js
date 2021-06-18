@@ -2,6 +2,9 @@ import React from 'react';
 import styles from '../styles/components/Header.module.css';
 import NavLink from './NavLink';
 import Link from 'next/link';
+import Facebook from './icons/Facebook';
+import Instagram from './icons/Instagram';
+import Twitter from './icons/Twitter';
 import { AnimateSharedLayout } from 'framer-motion';
 
 export default function Header() {
@@ -19,13 +22,22 @@ export default function Header() {
         </Link>
         <ul className={styles.SocialIcons}>
           <li>
-            <a href="https://youtube.com/">Instagram</a>
+            <a
+              href="https://www.instagram.com/cookingwithkritivity"
+              target="social"
+            >
+              <Instagram />
+            </a>
           </li>
           <li>
-            <a href="https://youtube.com/">Twitter</a>
+            <a href="https://twitter.com/kritivity" target="social">
+              <Twitter />
+            </a>
           </li>
           <li>
-            <a href="https://youtube.com/">Facebook</a>
+            <a href="https://www.facebook.com/kritivity.co.in" target="social">
+              <Facebook />
+            </a>
           </li>
         </ul>
       </div>
