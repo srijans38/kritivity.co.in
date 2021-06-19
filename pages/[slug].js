@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import BlockContent from '@sanity/block-content-to-react';
 import { getPostDataBySlug, getSlugs } from '../lib/sanity';
+import { getBlurredImage } from '../lib/blurImages';
 
 const imageSerializer = (props) => {
   const {
@@ -35,6 +36,8 @@ export default function Post({ data: { post } }) {
         height="500"
         layout="responsive"
         className={styles.Image}
+        placeholder="blur"
+        blurDataURL={post.blur.imgData}
         alt={post.title}
       />
       <div className={styles.ContentWrapper}>
@@ -67,12 +70,19 @@ export const getStaticPaths = async function () {
 export const getStaticProps = async function ({ params }) {
   const { slug } = params;
 
-  const { allPost: post } = await getPostDataBySlug(slug);
+  const {
+    allPost: [post],
+  } = await getPostDataBySlug(slug);
+
+  post.blur = await getBlurredImage(
+    post.mainImage.asset.url,
+    post.mainImage.asset.originalFilename
+  );
 
   return {
     props: {
       data: {
-        post: post[0],
+        post: post,
       },
     },
   };

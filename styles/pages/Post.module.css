@@ -5,6 +5,9 @@
   width: 100%;
 }
 
+.PostPage > div {
+  border-radius: 1.5rem;
+}
 .Image {
   object-fit: cover;
 }
