@@ -6,21 +6,7 @@ import { motion } from 'framer-motion';
 import BlockContent from '@sanity/block-content-to-react';
 import { getPostDataBySlug, getSlugs } from '../lib/sanity';
 import { getBlurredImage } from '../lib/blurImages';
-
-const imageSerializer = (props) => {
-  const {
-    node: {
-      asset: { _ref },
-    },
-    options: { projectId, dataset },
-  } = props;
-
-  const url = `https://cdn.sanity.io/images/${projectId}/${dataset}/${_ref
-    .slice(6)
-    .slice(0, -4)}.jpg`;
-
-  return <Image src={url} width="960" height="640" layout="responsive"></Image>;
-};
+import { getImageSerializer } from '../lib/getImageSerializer';
 
 const getDateString = (date) => {
   const d = new Date(date);
@@ -69,7 +55,7 @@ export default function Post({ data: { post } }) {
             projectId="mj5cd582"
             dataset="production"
             // imageOptions={{}}
-            serializers={{ types: { image: imageSerializer } }}
+            serializers={{ types: { image: getImageSerializer() } }}
           />
         </div>
         <div className={styles.SideBar}></div>
