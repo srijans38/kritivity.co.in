@@ -1,0 +1,56 @@
+.MobileMenu {
+  display: none;
+}
+
+.MobileNav {
+  display: none;
+}
+
+@media screen and (max-width: 540px) {
+  .MobileMenu {
+    display: block;
+    /* width: 30px;
+    height: 20px; */
+  }
+
+  .MobileMenu button {
+    position: relative;
+    z-index: 2;
+    width: 6rem;
+    height: 3rem;
+    display: inline-block;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .MobileMenu button:active {
+    background: transparent;
+  }
+
+  .MobileMenu svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .MobileNav {
+    position: fixed;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--accent);
+    top: 0;
+    right: 0;
+    z-index: 1;
+    overflow-y: hidden;
+  }
+}
