@@ -22,6 +22,25 @@ const imageSerializer = (props) => {
   return <Image src={url} width="960" height="640" layout="responsive"></Image>;
 };
 
+const getDateString = (date) => {
+  const d = new Date(date);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+};
+
 export default function Post({ data: { post } }) {
   return (
     <motion.div
@@ -43,6 +62,7 @@ export default function Post({ data: { post } }) {
       <div className={styles.ContentWrapper}>
         <div className={styles.Content}>
           <h1 className={styles.PostTitle}>{post.title}</h1>
+          <p>Published on : {getDateString(post.publishedAt)}</p>
           <BlockContent
             blocks={post.body}
             className={styles.Text}

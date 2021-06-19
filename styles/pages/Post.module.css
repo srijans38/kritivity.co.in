@@ -8,6 +8,11 @@
 .PostPage > div {
   border-radius: 1.5rem;
 }
+
+.Content > p {
+  color: #555;
+}
+
 .Image {
   object-fit: cover;
 }
@@ -15,6 +20,7 @@
 .Text {
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 }
 
 .Text h1,
