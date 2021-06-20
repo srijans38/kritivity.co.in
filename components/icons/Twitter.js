@@ -3,6 +3,7 @@ import React from 'react';
 export default function Twitter(props) {
   return (
     <svg
+      title="Twitter"
       width="1em"
       height="1em"
       viewBox="0 0 50 51"

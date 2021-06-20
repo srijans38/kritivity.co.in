@@ -3,6 +3,7 @@ import React from 'react';
 export default function Facebook(props) {
   return (
     <svg
+      title="Facebook"
       width="1em"
       height="1em"
       viewBox="0 0 50 51"
