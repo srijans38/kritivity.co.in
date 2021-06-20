@@ -55,7 +55,7 @@ export default function Post({ data: { post } }) {
             projectId="mj5cd582"
             dataset="production"
             // imageOptions={{}}
-            serializers={{ types: { image: getImageSerializer() } }}
+            serializers={{ types: { image: getImageSerializer(post.title) } }}
           />
         </div>
         <div className={styles.SideBar}></div>
