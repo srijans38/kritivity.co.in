@@ -1,0 +1,25 @@
+.ShowAllPosts {
+  margin: 6rem auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Josefin Sans';
+}
+
+.ShowAllPosts a {
+  position: relative;
+}
+
+.ShowAllPosts a::after {
+  content: '';
+  position: absolute;
+  width: 20%;
+  height: 30%;
+  bottom: -1.2rem;
+  left: 0;
+  background-color: var(--accent);
+  transition: all 0.2s ease-in-out;
+}
+
+.ShowAllPosts a:hover::after {
+  width: 100%;
+}

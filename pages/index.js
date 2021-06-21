@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import ExcerptPosts from '../components/ExcerptPosts';
 import ImageCTA from '../components/ImageCTA';
+import ShowAllPosts from '../components/ShowAllPosts';
 import { motion } from 'framer-motion';
 
 import { getBlurredImage } from '../lib/blurImages';
@@ -21,6 +22,7 @@ export default function Home({ posts }) {
 
       <ImageCTA posts={posts.slice(0, 3)} />
       <ExcerptPosts posts={posts.slice(3)} />
+      <ShowAllPosts />
     </motion.div>
   );
 }
