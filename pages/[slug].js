@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/pages/Post.module.css';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,30 @@ import { getImageSerializer } from '../lib/getImageSerializer';
 import { getDateString } from '../lib/getDateString';
 
 export default function Post({ data: { post } }) {
+  const [loadingViews, setLoadingViews] = useState(true);
+  const [views, setViews] = useState(0);
+
+  useEffect(async () => {
+    const fetchViews = await fetch(`/api/views/${post._id}`);
+    const { count } = await fetchViews.json();
+
+    setViews(count);
+
+    if (process.env.NODE_ENV === 'production') {
+      const updateViews = await fetch(`api/views/${post._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          increment: true,
+        }),
+      });
+    }
+
+    setLoadingViews(false);
+  }, []);
+
   return (
     <motion.div
       className={styles.PostPage}

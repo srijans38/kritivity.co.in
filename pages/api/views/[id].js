@@ -9,7 +9,7 @@ export default async (req, res) => {
       if (doc.exists) {
         res.status(200).json(doc.data());
       } else {
-        throw `Document '${req.query.id}' does not exist`;
+        res.json({ count: 0 });
       }
     }
 
@@ -27,6 +27,6 @@ export default async (req, res) => {
       }
     }
   } catch (err) {
-    res.status(404).json({ err });
+    res.json({ err });
   }
 };
