@@ -13,7 +13,7 @@ export default function SEO({ title, description, image, type }) {
       <meta property="og:description" content={description} />
       <meta
         property="og:url"
-        content={`https://test.kritivity.co.in${router.pathname}`}
+        content={`https://test.kritivity.co.in${router.asPath}`}
       />
       <meta property="og:image" content={image} />
       <meta property="og:type" content={type} />

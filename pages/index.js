@@ -15,7 +15,7 @@ export default function Home({ posts }) {
         title="Home"
         description="Kriti's Food Blog"
         type="website"
-        image="/Kritivity-logo.svg"
+        image="https:/test.kritivity.co.in/Kritivity-logo.svg"
       />
       <motion.div
         style={{ width: '100%', height: '100%' }}
