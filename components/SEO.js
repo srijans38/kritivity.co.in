@@ -8,15 +8,15 @@ export default function SEO({ title, description, image, type }) {
   return (
     <Head>
       <title>{title} | Kritivity</title>
-      <meta name="og:title" content={title} />
+      <meta property="og:title" content={title} />
       <meta name="description" content={description} />
-      <meta name="og:description" content={description} />
+      <meta property="og:description" content={description} />
       <meta
-        name="og:url"
+        property="og:url"
         content={`https://test.kritivity.co.in${router.pathname}`}
       />
-      <meta name="og:image" content={image} />
-      <meta name="og:type" content={type} />
+      <meta property="og:image" content={image} />
+      <meta property="og:type" content={type} />
     </Head>
   );
 }
