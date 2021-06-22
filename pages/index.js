@@ -6,24 +6,28 @@ import { motion } from 'framer-motion';
 
 import { getBlurredImage } from '../lib/blurImages';
 import { getTopPosts } from '../lib/sanity';
+import SEO from '../components/SEO';
 
 export default function Home({ posts }) {
   return (
-    <motion.div
-      style={{ width: '100%', height: '100%' }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-    >
-      <Head>
-        <title>Kritivity | Home</title>
-        <meta name="description" content="Kriti's Food Blog - Kritivity" />
-      </Head>
-
-      <ImageCTA posts={posts.slice(0, 3)} />
-      <ExcerptPosts posts={posts.slice(3)} />
-      <ShowAllPosts />
-    </motion.div>
+    <>
+      <SEO
+        title="Home"
+        description="Kriti's Food Blog"
+        type="website"
+        image="/Kritivity-logo.svg"
+      />
+      <motion.div
+        style={{ width: '100%', height: '100%' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.2 } }}
+        exit={{ opacity: 0 }}
+      >
+        <ImageCTA posts={posts.slice(0, 3)} />
+        <ExcerptPosts posts={posts.slice(3)} />
+        <ShowAllPosts />
+      </motion.div>
+    </>
   );
 }
 

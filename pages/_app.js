@@ -4,7 +4,6 @@ import '../styles/globals.css';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
