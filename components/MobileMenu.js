@@ -72,9 +72,9 @@ export default function MobileMenu() {
                 x2="96.5"
                 y2="53.5"
                 stroke="black"
-                stroke-width="7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <line
                 id="middle"
@@ -83,9 +83,9 @@ export default function MobileMenu() {
                 x2="96.5"
                 y2="28.5"
                 stroke="black"
-                stroke-width="7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <line
                 id="top"
@@ -94,9 +94,9 @@ export default function MobileMenu() {
                 x2="96.5"
                 y2="3.5"
                 stroke="black"
-                stroke-width="7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </g>
           </motion.svg>
@@ -119,9 +119,9 @@ export default function MobileMenu() {
               x2="83.0929"
               y2="5.73919"
               stroke="black"
-              stroke-width="7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <line
               x1="5.90897"
@@ -129,9 +129,9 @@ export default function MobileMenu() {
               x2="83.9053"
               y2="56.3898"
               stroke="black"
-              stroke-width="7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </motion.svg>
         )}
