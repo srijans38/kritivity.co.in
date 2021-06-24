@@ -6,6 +6,7 @@ import Facebook from './icons/Facebook';
 import Instagram from './icons/Instagram';
 import Twitter from './icons/Twitter';
 import { AnimateSharedLayout } from 'framer-motion';
+import MobileMenu from './MobileMenu';
 
 export default function Header() {
   return (
@@ -40,6 +41,7 @@ export default function Header() {
             </a>
           </li>
         </ul>
+        <MobileMenu />
       </div>
       <ul className={styles.NavLinks}>
         <li>

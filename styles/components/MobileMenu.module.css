@@ -9,12 +9,12 @@
 @media screen and (max-width: 540px) {
   .MobileMenu {
     display: block;
+    position: relative;
     /* width: 30px;
     height: 20px; */
   }
 
   .MobileMenu button {
-    position: relative;
     z-index: 2;
     width: 6rem;
     height: 3rem;
@@ -43,14 +43,23 @@
   }
 
   .MobileNav {
-    position: fixed;
+    position: absolute;
     display: grid;
-    width: 100vw;
-    height: 100vh;
+    width: fit-content;
+    height: 50vh;
+    border-radius: 1.5rem;
     background-color: var(--accent);
-    top: 0;
+    top: 50px;
     right: 0;
     z-index: 1;
     overflow-y: hidden;
+  }
+
+  .NavLinks {
+    display: grid;
+    place-items: center;
+    gap: 0.5rem;
+    width: 50vw;
+    list-style: none;
   }
 }
