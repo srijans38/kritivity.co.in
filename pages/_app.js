@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
 import * as ga from '../lib/analytics';
+import IconMetas from '../lib/icons';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -28,7 +29,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Kritivity</title>
         <meta name="description" content="Kriti's Food Blog" />
-        <link rel="icon" href="/favicon.ico" />
+        <IconMetas />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <AnimatePresence exitBeforeEnter>
